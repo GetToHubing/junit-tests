@@ -1,6 +1,9 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Optional;
+
 import static org.junit.Assert.*;
 
 public class StudentTest {
@@ -41,6 +44,22 @@ public class StudentTest {
         student1.addGrade(85);
         student1.addGrade(92);
         assertEquals((85 + 92) / 2, student1.getGradeAverage());
+    }
+
+    @Test
+    public void updateGradeTest() {
+        student1.addGrade(85);
+        student1.addGrade(92);
+        student1.updateGrade(85, 100);
+        assertSame(100, student1.getGrades().get(0));
+    }
+
+    @Test
+    public void deleteGradeTest() {
+        student1.addGrade(85);
+        student1.addGrade(92);
+        student1.deleteGrade(85);
+        assertEquals(1, student1.getGrades().size());
     }
 
 }
